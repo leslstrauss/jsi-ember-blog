@@ -6,10 +6,10 @@
   </head>
 
   <body>
-  <script src="jquery-1.10.2.js"></script>
-  <script src="handlebars-1.1.2.js"></script>
-  <script src="ember-1.7.0.js"></script>
-  <script src="app.js"></script>
+  <script src="scripts/jquery-1.10.2.js"></script>
+  <script src="scripts/handlebars-1.1.2.js"></script>
+  <script src="scripts/ember-1.7.0.js"></script>
+  <script src="scripts/app.js"></script>
 
   <script type="text/x-handlebars" data-template-name="application">
     <h1>Blog</h1>
@@ -17,15 +17,32 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    {{ #link-to 'post1' }}post1{{ /link-to }}
+    <h2>{{#link-to 'newPost'}}New Post{{/link-to}}</h2>
+    <ul>
+      <li>{{#link-to 'post1'}}post1{{/link-to}}</li>
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="newPost">
+    {{#link-to 'index'}}Home{{/link-to}}
+    <br></br>
+    Title: {{ input type="text" value=title }}
+    <br></br>
+    Body: {{ input type="text" value=body }}
   </script>
 
   <script type="text/x-handlebars" data-template-name="post1">
+    {{#link-to 'index'}}Home{{/link-to}}
     <h2>{{ title }}</h2>
-    <p>{{ body }}</p>
-    {{ #link-to 'index' }}Home{{ /link-to }}
+    {{#if isExpanded}}
+    <button {{action 'toggleProperty' 'isExpanded'}}>Hide Post</button>
+    <div class='body'>
+      {{ body }}
+    </div>
+    {{else}}
+    <button {{action 'toggleProperty' 'isExpanded'}}>Show Post</button>
+    {{/if}}
   </script>
-
 
   </body>
 </html>

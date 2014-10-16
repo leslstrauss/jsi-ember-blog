@@ -2,10 +2,10 @@ var App = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
+console.log('welcome to leslie world');
 App.Router.map(function() {
-  this.resource('posts', function() {
-    this.route('post1');
-  });
+  this.route('newPost');
+  this.route('post1');
 });
 
 App.Post1Route = Ember.Route.extend({
@@ -16,4 +16,7 @@ App.Post1Route = Ember.Route.extend({
     };
   }
 });
+
+
+
 
