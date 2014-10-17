@@ -19,20 +19,20 @@
   <script type="text/x-handlebars" data-template-name="index">
     <ul>
       <li>{{#link-to 'post1'}}post1{{/link-to}}</li>
+      <li>{{#link-to 'create-post'}}New Post{{/link-to}}</li>
     </ul>
-    <h2>{{#link-to 'newPost'}}New Post{{/link-to}}</h2>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="newPost">
-    {{#link-to 'index'}}Home{{/link-to}}
-
-    <form {{action "submit" on="submit"}}>
-      <h2>Add New Post</h>
-      <p><label>Title {{input type="text" value="title"}}</label></p>
-      <p><label>Body {{input type="text" value="body"}}</label></p>
-      <button {{action "cancel"}}>Cancel</button>
-      <input type="submit" {{bind-attr value=submitTitle}}
+  <script type="text/x-handlebars" data-template-name="create-post">
+    <h2>Add New Post</h>
+    {{create-post submit='createPost' cancel='cancelCreatePost' submitTitle='Create Post'}}
+    <form {{action 'submit' on='submit'}}>
+      <p><label>Title {{input type='text' value='title'}}</label></p>
+      <p><label>Body {{input type='title' value='title'}}</label></p>
+      <button {{action 'cancel'}}>Cancel</button>
+      <input type='submit' {{bind-attr value=submitTitle}}
     </form>
+
   </script>
 
   <script type="text/x-handlebars" data-template-name="post1">
