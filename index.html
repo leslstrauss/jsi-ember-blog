@@ -17,21 +17,22 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    <h2>{{#link-to 'newPost'}}New Post{{/link-to}}</h2>
     <ul>
       <li>{{#link-to 'post1'}}post1{{/link-to}}</li>
     </ul>
+    <h2>{{#link-to 'newPost'}}New Post{{/link-to}}</h2>
   </script>
 
   <script type="text/x-handlebars" data-template-name="newPost">
     {{#link-to 'index'}}Home{{/link-to}}
-    <br></br>
-    Title: {{ input type="text" value=title }}
-    <br></br>
-    Body: {{ input type="text" value=body }}
 
-    {{user-form submit="submitPost" cancel="cancelPost" submitTitle="Create New Post2"}}
-
+    <form {{action "submit" on="submit"}}>
+      <h2>Add New Post</h>
+      <p><label>Title {{input type="text" value="title"}}</label></p>
+      <p><label>Body {{input type="text" value="body"}}</label></p>
+      <button {{action "cancel"}}>Cancel</button>
+      <input type="submit" {{bind-attr value=submitTitle}}
+    </form>
   </script>
 
   <script type="text/x-handlebars" data-template-name="post1">
